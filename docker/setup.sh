@@ -21,5 +21,8 @@ apt install -y git-lfs
 # Needed
 DEBIAN_FRONTEND=noninteractive apt install -y python3-tk
 
+# Done here to avoid cloning full repository for the Docker image
+apt install -y git-lfs # python3-tk
+
 # cd Qwen-1_8B-Chat
 # git lfs pull
