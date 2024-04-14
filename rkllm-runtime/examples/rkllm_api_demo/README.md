@@ -8,13 +8,8 @@ bash build-linux.sh
 ## Install
 Push the compiled `llm_demo` file and `librkllmrt.so` file to the device:
 ```bash
-<<<<<<<< HEAD:rkllm-runtime/examples/rkllm_api_demo/Readme.md
-adb push build/build_linux_aarch64_Release/llm_demo /userdata/llm
-adb push ../../runtime/Linux/librkllm_api/aarch64/librkllmrt.so /userdata/llm/lib
-========
 cp build/build_linux_aarch64_Release/llm_demo /usr/bin
-cp ../runtime/Linux/librkllm_api/aarch64/librkllmrt.so /usr/local/lib
->>>>>>>> dc2e2bb (Fixed README and renamed):rkllm-runtime/examples/rkllm_api_demo/README.md
+cp ../../runtime/Linux/librkllm_api/aarch64/librkllmrt.so /usr/local/lib
 ```
 
 ## Run
