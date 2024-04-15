@@ -17,6 +17,8 @@ cp ../runtime/Linux/librkllm_api/aarch64/librkllmrt.so /usr/local/lib
 >>>>>>>> dc2e2bb (Fixed README and renamed):rkllm-runtime/examples/rkllm_api_demo/README.md
 ```
 
+To exit the LLM enter either `exit` or `quit`.
+
 ## Run
 ```bash
 adb shell
