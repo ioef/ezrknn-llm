@@ -9,7 +9,7 @@ git clone https://github.com/Pelochus/ezrknn-llm/
 curl https://raw.githubusercontent.com/Pelochus/ezrknn-llm/master/install.sh | sudo bash
 
 # For running the test.py
-pip install /ezrknn-llm/rkllm-toolkit/packages/rkllm_toolkit-1.0.0-cp38-cp38-linux_x86_64.whl
+pip install /ezrknn-llm/rkllm-toolkit/packages/rkllm_toolkit-1.0.1-cp38-cp38-linux_x86_64.whl
 
 # Clone some compatible LLMs
 cd /ezrknn-llm/rkllm-toolkit/examples/huggingface
