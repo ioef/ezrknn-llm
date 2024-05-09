@@ -30,7 +30,7 @@ cp ./rkllm-runtime/runtime/Linux/librkllm_api/include/* /usr/local/include
 
 message_print "Compiling LLM runtime for Linux..."
 
-cd ./rkllm-runtime/example
+cd ./rkllm-runtime/examples/rkllm_api_demo/
 bash build-linux.sh
 
 message_print "Moving rkllm to /usr/bin..."
@@ -41,5 +41,9 @@ message_print "Increasing file limit for all users (needed for LLMs to run)..."
 
 echo "* soft nofile 16384" >> /etc/security/limits.conf
 echo "* hard nofile 1048576" >> /etc/security/limits.conf
+
+# Add root too, just in case
+echo "root soft nofile 16384" >> /etc/security/limits.conf
+echo "root hard nofile 1048576" >> /etc/security/limits.conf
 
 message_print "Done installing ezrknn-llm!"
