@@ -54,11 +54,7 @@ void callback(RKLLMResult *result, void *userdata, LLMCallState state)
     }
     else
     {
-<<<<<<< HEAD:rkllm-runtime/example/src/main.cpp
-        printf("%s", text);
-=======
         printf("%s", result->text);
->>>>>>> airockchip-main:rkllm-runtime/examples/rkllm_api_demo/src/main.cpp
     }
 }
 
@@ -80,14 +76,10 @@ int main(int argc, char **argv)
     param.top_k = 1;
     param.max_new_tokens = 256;
     param.max_context_len = 512;
-<<<<<<< HEAD:rkllm-runtime/example/src/main.cpp
-    
-=======
     param.logprobs = false;
     param.top_logprobs = 5;
     param.use_gpu = false;
 
->>>>>>> airockchip-main:rkllm-runtime/examples/rkllm_api_demo/src/main.cpp
     rkllm_init(&llmHandle, param, callback);
     printf("RKLLM init success!\n");
     
