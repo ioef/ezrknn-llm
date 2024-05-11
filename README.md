@@ -50,8 +50,9 @@ To convert the model, run:
 `python3 test.py`
 
 ## Older versions
-**Note to self:** Divide this by branches (instead of commits) or make releases before updating a new Rockchip release?
-v1.0.0-beta: https://github.com/Pelochus/ezrknn-llm/tree/973a16e14cb648228546cbf6a4356dbbb6505fea
+There are dedicated branch containing the latest commit done by this fork before updating to a newer release from Rockchip. They are also on the releases of this repo. To use the latest version, always use the main branch.
+
+- **v1.0.0-beta**: https://github.com/Pelochus/ezrknn-llm/tree/v1.0.0
 
 # Original README starts below
 
