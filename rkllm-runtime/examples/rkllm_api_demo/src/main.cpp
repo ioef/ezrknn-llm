@@ -121,8 +121,8 @@ int main(int argc, char **argv)
             }
         }
         
-        // string text = PROMPT_TEXT_PREFIX + input_str + PROMPT_TEXT_POSTFIX;
-        string text = input_str;
+        string text = PROMPT_TEXT_PREFIX + input_str + PROMPT_TEXT_POSTFIX;
+        // string text = input_str;
 
         printf("LLM: ");
         rkllm_run(llmHandle, text.c_str(), NULL);
