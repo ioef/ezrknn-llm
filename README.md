@@ -49,6 +49,10 @@ To convert the model, run:
 
 `python3 test.py`
 
+## Older versions
+**Note to self:** Divide this by branches (instead of commits) or make releases before updating a new Rockchip release?
+v1.0.0-beta: https://github.com/Pelochus/ezrknn-llm/tree/973a16e14cb648228546cbf6a4356dbbb6505fea
+
 # Original README starts below
 
 <hr>
