@@ -49,6 +49,11 @@ To convert the model, run:
 
 `python3 test.py`
 
+## Fixing hallucinating LLMs
+Check this reddit post if you LLM seems to be responding garbage:
+
+https://www.reddit.com/r/RockchipNPU/comments/1cpngku/rknnllm_v101_lets_talk_about_converting_and/
+
 ## Older versions
 There are dedicated branch containing the latest commit done by this fork before updating to a newer release from Rockchip. They are also on the releases of this repo. To use the latest version, always use the main branch.
 
