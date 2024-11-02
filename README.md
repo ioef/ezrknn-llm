@@ -66,6 +66,7 @@ There are dedicated branch containing the latest commit done by this fork before
 <hr>
 
 # Description
+
   RKLLM software stack can help users to quickly deploy AI models to Rockchip chips. The overall framework is as follows:
     <center class="half">
         <div style="background-color:#ffffff;">
@@ -81,38 +82,97 @@ There are dedicated branch containing the latest commit done by this fork before
 - RKNPU kernel driver is responsible for interacting with NPU hardware. It has been open source and can be found in the Rockchip kernel code.
 
 # Support Platform
-  - RK3588 Series
-  - RK3576 Series
+
+- RK3588 Series
+- RK3576 Series
 
 # Support Models
-  - [X] [TinyLLAMA 1.1B](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0/tree/fe8a4ea1ffedaf415f4da2f062534de366a451e6) 
-  - [X] [Qwen 1.8B](https://huggingface.co/Qwen/Qwen-1_8B-Chat/tree/1d0f68de57b88cfde81f3c3e537f24464d889081)
-  - [X] [Qwen2 0.5B](https://huggingface.co/Qwen/Qwen1.5-0.5B/tree/8f445e3628f3500ee69f24e1303c9f10f5342a39)
-  - [X] [Phi-2 2.7B](https://hf-mirror.com/microsoft/phi-2/tree/834565c23f9b28b96ccbeabe614dd906b6db551a)
-  - [X] [Phi-3 3.8B](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct/tree/291e9e30e38030c23497afa30f3af1f104837aa6)
-  - [X] [ChatGLM3 6B](https://huggingface.co/THUDM/chatglm3-6b/tree/103caa40027ebfd8450289ca2f278eac4ff26405)
-  - [X] [Gemma 2B](https://huggingface.co/google/gemma-2b-it/tree/de144fb2268dee1066f515465df532c05e699d48)
-  - [X] [InternLM2 1.8B](https://huggingface.co/internlm/internlm2-chat-1_8b/tree/ecccbb5c87079ad84e5788baa55dd6e21a9c614d)
-  - [X] [MiniCPM 2B](https://huggingface.co/openbmb/MiniCPM-2B-sft-bf16/tree/79fbb1db171e6d8bf77cdb0a94076a43003abd9e)
+
+- [x] [LLAMA models](https://huggingface.co/meta-llama) 
+- [x] [TinyLLAMA models](https://huggingface.co/TinyLlama) 
+- [x] [Qwen models](https://huggingface.co/models?search=Qwen/Qwen)
+- [x] [Phi models](https://huggingface.co/models?search=microsoft/phi)
+- [x] [ChatGLM3-6B](https://huggingface.co/THUDM/chatglm3-6b/tree/103caa40027ebfd8450289ca2f278eac4ff26405)
+- [x] [Gemma models](https://huggingface.co/collections/google/gemma-2-release-667d6600fd5220e7b967f315)
+- [x] [InternLM2 models](https://huggingface.co/collections/internlm/internlm2-65b0ce04970888799707893c)
+- [x] [MiniCPM models](https://huggingface.co/collections/openbmb/minicpm-65d48bf958302b9fd25b698f)
+
+# Model Performance Benchmark
+
+| model          | dtype      | seqlen | max_context | new_tokens | TTFT(ms) | Tokens/s | memory(G) | platform |
+|:-------------- |:---------- |:------:|:-----------:|:----------:|:--------:|:--------:|:---------:|:--------:|
+| TinyLLAMA-1.1B | w4a16      | 64     | 320         | 256        | 345.00   | 21.10    | 0.77      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 410.00   | 18.50    | 0.8       | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 140.46   | 24.21    | 1.25      | RK3588   |
+|                | w8a8_g512  | 64     | 320         | 256        | 195.00   | 20.08    | 1.29      | RK3588   |
+| Qwen2-1.5B     | w4a16      | 64     | 320         | 256        | 512.00   | 14.40    | 1.75      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 550.00   | 12.75    | 1.76      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 206.00   | 16.46    | 2.47      | RK3588   |
+|                | w8a8_g128  | 64     | 320         | 256        | 725.00   | 7.00     | 2.65      | RK3588   |
+| Phi-3-3.8B     | w4a16      | 64     | 320         | 256        | 975.00   | 6.60     | 2.16      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 1180.00  | 5.85     | 2.23      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 516.00   | 7.44     | 3.88      | RK3588   |
+|                | w8a8_g512  | 64     | 320         | 256        | 610.00   | 6.13     | 3.95      | RK3588   |
+| ChatGLM3-6B    | w4a16      | 64     | 320         | 256        | 1168.00  | 4.62     | 3.86      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 1582.56  | 3.82     | 3.96      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 800.00   | 4.95     | 6.69      | RK3588   |
+|                | w8a8_g128  | 64     | 320         | 256        | 2190.00  | 2.70     | 7.18      | RK3588   |
+| Gemma2-2B      | w4a16      | 64     | 320         | 256        | 628.00   | 8.00     | 3.63      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 776.20   | 7.40     | 3.63      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 342.29   | 9.67     | 4.84      | RK3588   |
+|                | w8a8_g128  | 64     | 320         | 256        | 1055.00  | 5.49     | 5.14      | RK3588   |
+| InternLM2-1.8B | w4a16      | 64     | 320         | 256        | 475.00   | 13.30    | 1.59      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 572.00   | 11.95    | 1.62      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 205.97   | 15.66    | 2.38      | RK3588   |
+|                | w8a8_g512  | 64     | 320         | 256        | 298.00   | 12.66    | 2.45      | RK3588   |
+| MiniCPM3-4B    | w4a16      | 64     | 320         | 256        | 1397.00  | 4.80     | 2.7       | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 1645.00  | 4.39     | 2.8       | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 702.18   | 6.15     | 4.65      | RK3588   |
+|                | w8a8_g128  | 64     | 320         | 256        | 1691.00  | 3.42     | 5.06      | RK3588   |
+| llama3-8B      | w4a16      | 64     | 320         | 256        | 1607.98  | 3.60     | 5.63      | RK3576   |
+|                | w4a16_g128 | 64     | 320         | 256        | 2010.00  | 3.00     | 5.76      | RK3576   |
+|                | w8a8       | 64     | 320         | 256        | 1128.00  | 3.79     | 9.21      | RK3588   |
+|                | w8a8_g512  | 64     | 320         | 256        | 1281.35  | 3.05     | 9.45      | RK3588   |
+
+- This performance data were collected based on the maximum CPU and NPU frequencies of each platform with version 1.1.0. 
+- The script for setting the frequencies is located in the scripts directory.
 
 # Download
-- You can also download all packages, docker image, examples, docs and platform-tools from [RKLLM_SDK](https://console.zbox.filez.com/l/RJJDmB), fetch code: rkllm
+
+You can download the latest package, docker image, example, documentation, and platform-tool from [RKLLM_SDK](https://console.zbox.filez.com/l/RJJDmB), fetch code: rkllm
+
+# Note
+
+- The modifications in version 1.1 are significant, making it incompatible with older version models. Please use the latest toolchain for model conversion and inference.
+
+- The supported Python versions are:
+  
+  - Python 3.8
+  
+  - Python 3.10
+
+- Latest version: [ <u>v1.1.1](https://github.com/airockchip/rknn-llm/releases/tag/release-v1.1.1)</u>
 
 # RKNN Toolkit2
+
 If you want to deploy additional AI model, we have introduced a SDK called RKNN-Toolkit2. For details, please refer to:
 
 https://github.com/airockchip/rknn-toolkit2
 
 # CHANGELOG
-## v1.0.1
- - Optimize model conversion memory occupation
- - Optimize inference memory occupation
- - Increase prefill speed
- - Reduce initialization time
- - Improve quantization accuracy
- - Add support for Gemma, ChatGLM3, MiniCPM, InternLM2, and Phi-3
- - Add Server invocation
- - Add inference interruption interface
- - Add logprob and token_id to the return value
 
-For older version, please refer [CHANGELOG](CHANGELOG.md)
+## v1.1.0
+
+- Support group-wise quantization (w4a16 group sizes of 32/64/128, w8a8 group sizes of 128/256/512).
+- Support joint inference with LoRA model loading
+- Support storage and preloading of prompt cache.
+- Support gguf model conversion (currently only support q4_0 and fp16).
+- Optimize initialization, prefill, and decode time.
+- Support four input types: prompt, embedding, token, and multimodal.
+- Add PC-based simulation accuracy testing and inference interface support for rkllm-toolkit.
+- Add gdq algorithm to improve 4-bit quantization accuracy.
+- Add mixed quantization algorithm, supporting a combination of grouped and non-grouped quantization based on specified ratios.
+- Add support for models such as Llama3, Gemma2, and MiniCPM3.
+- Resolve catastrophic forgetting issue when the number of tokens exceeds max_context.
+
+for older version, please refer [CHANGELOG](CHANGELOG.md)
